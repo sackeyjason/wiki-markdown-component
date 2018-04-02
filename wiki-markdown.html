@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="wiki-markdown">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `wiki-markdown`
+     * FedWiki story element, formatted text.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class WikiMarkdown extends Polymer.Element {
+      static get is() { return 'wiki-markdown'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'wiki-markdown'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(WikiMarkdown.is, WikiMarkdown);
+  </script>
+</dom-module>
