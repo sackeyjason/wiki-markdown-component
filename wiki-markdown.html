@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<!-- should be in another html import: -->
+<script src="../marked/lib/marked.js"></script>
 
 <dom-module id="wiki-markdown">
   <template>
@@ -7,7 +9,6 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
   </template>
 
   <script>
@@ -23,11 +24,30 @@
       static get is() { return 'wiki-markdown'; }
       static get properties() {
         return {
-          prop1: {
+          formattedText: {
             type: String,
-            value: 'wiki-markdown'
+            value: undefined
           }
         };
+      }
+      render(input) {
+        var shadowRoot = this.attachShadow({mode: 'open'});
+        shadowRoot.innerHTML = marked(input);
+      }
+      constructor() {
+        super();
+        var t = this.innerHTML;
+        var that = this;
+        if (this.getAttribute('src')) {
+          fetch(this.getAttribute('src')).then(function (res) {
+            window._aaa = res;
+            return res.text();
+          }).then(function(u) {
+            that.render(u);
+          });
+        } else {
+          this.render(t);
+        }
       }
     }
 

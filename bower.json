@@ -4,7 +4,8 @@
   "main": "wiki-markdown.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "wiki-plugin-markdown": "fedwiki/wiki-plugin-markdown#^0.3.0"
+    "wiki-plugin-markdown": "fedwiki/wiki-plugin-markdown#^0.3.0",
+    "marked": "^0.3.19"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
